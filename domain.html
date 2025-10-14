@@ -1,0 +1,826 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Pepper Pal</title>
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon" />
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon" />
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Vendor CSS Files -->
+    <link
+      href="assets/vendor/bootstrap/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="assets/vendor/bootstrap-icons/bootstrap-icons.css"
+      rel="stylesheet"
+    />
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet" />
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet" />
+    <link
+      href="assets/vendor/glightbox/css/glightbox.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet" />
+
+    <style>
+      .content-section {
+        display: none;
+      }
+      .content-section.active {
+        display: block;
+      }
+      .portfolio-filters li {
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+      
+      /* Document Paper Style */
+      .document-paper {
+        background: #ffffff;
+        border-radius: 8px;
+        padding: 60px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        max-width: 1000px;
+        margin: 0 auto;
+        font-family: 'Georgia', 'Times New Roman', Times, serif;
+        font-size: 18px;
+        line-height: 1.8;
+        position: relative;
+      }
+      
+      /* Subtle paper texture */
+      .document-paper::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 31px,
+            rgba(0, 0, 0, 0.02) 31px,
+            rgba(0, 0, 0, 0.02) 32px
+          );
+        pointer-events: none;
+        border-radius: 8px;
+      }
+      
+      /* Document Header */
+      .doc-header {
+        text-align: center;
+        margin-bottom: 50px;
+        border-bottom: 3px double #2c3e50;
+        padding-bottom: 30px;
+        position: relative;
+      }
+      
+      .doc-title {
+        color: #2c3e50;
+        font-size: 32px;
+        font-weight: 700;
+        margin-bottom: 15px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+      
+      .doc-subtitle {
+        color: #7f8c8d;
+        font-style: italic;
+        font-size: 20px;
+        font-weight: 400;
+      }
+      
+      /* Section Headings */
+      .section-heading {
+        color: #2c3e50;
+        font-size: 24px;
+        font-weight: 700;
+        margin: 35px 0 20px 0;
+        padding-left: 20px;
+        border-left: 5px solid;
+        position: relative;
+      }
+      
+      .section-heading.blue { border-left-color: #3498db; }
+      .section-heading.green { border-left-color: #2ecc71; }
+      .section-heading.red { border-left-color: #e74c3c; }
+      .section-heading.purple { border-left-color: #9b59b6; }
+      .section-heading.orange { border-left-color: #f39c12; }
+      
+      /* Paragraph Style */
+      .doc-paragraph {
+        text-align: justify;
+        color: #2c3e50;
+        margin-bottom: 20px;
+        text-indent: 40px;
+      }
+      
+      .doc-paragraph.no-indent {
+        text-indent: 0;
+      }
+      
+      /* List Styles */
+      .doc-list {
+        margin: 20px 0;
+        padding-left: 40px;
+      }
+      
+      .doc-list li {
+        margin-bottom: 12px;
+        color: #2c3e50;
+        line-height: 1.8;
+      }
+      
+      /* Subsection */
+      .subsection-title {
+        color: #34495e;
+        font-size: 20px;
+        font-weight: 600;
+        margin: 25px 0 15px 0;
+      }
+      
+      /* Image container */
+      .doc-image {
+        margin: 40px 0;
+        text-align: center;
+      }
+      
+      .doc-image img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 4px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+
+  <body class="index-page">
+    <header
+      id="header"
+      class="header d-flex align-items-center light-background sticky-top"
+    >
+      <div
+        class="container-fluid position-relative d-flex align-items-center justify-content-between"
+      >
+        <a
+          href="index.html"
+          class="logo d-flex align-items-center me-auto me-xl-0"
+        >
+          <h1 class="sitename">Pepper Pal</h1>
+        </a>
+
+        <nav id="navmenu" class="navmenu">
+          <ul>
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">Domain</a></li>
+            <li><a href="resume.html">Milestones</a></li>
+            <li><a href="services.html">Documents</a></li>
+            <li><a href="portfolio.html"> Slides of past presentations</a></li>
+            <li><a href="portfolio.html"> About us</a></li>
+            <li><a href="portfolio.html">Contact us</a></li>
+          </ul>
+          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+        </nav>
+
+        <div class="header-social-links">
+          <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
+          <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
+          <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </header>
+
+    <main class="main">
+      <!-- Portfolio Section -->
+      <section id="portfolio" class="portfolio section">
+        <!-- Section Title -->
+        <div class="container section-title" data-aos="fade-up">
+          <h2>Project Domain</h2>
+          <p>Detailed Research Information</p>
+        </div>
+        <!-- End Section Title -->
+
+        <div class="container">
+          <div
+            class="isotope-layout"
+            data-default-filter="*"
+            data-layout="masonry"
+            data-sort="original-order"
+          >
+            <ul
+              class="portfolio-filters isotope-filters"
+              data-aos="fade-up"
+              data-aos-delay="100"
+            >
+              <li data-filter="literature" class="filter-active">
+                Literature Review
+              </li>
+              <li data-filter="problem">Research Problem</li>
+              <li data-filter="objectives">Objectives</li>
+              <li data-filter="methodology">Methodology</li>
+              <li data-filter="gap">Research Gap</li>
+            </ul>
+            <!-- End Portfolio Filters -->
+
+            <!-- Content Container -->
+            <div class="row gy-4" data-aos="fade-up" data-aos-delay="200">
+              <!-- Literature Review -->
+              <div class="col-lg-12 content-section active" id="literature">
+                <div class="document-paper">
+                  <div class="doc-header">
+                    <h2 class="doc-title">Literature Review</h2>
+                    <p class="doc-subtitle">
+                      A Comprehensive Review of Ceylon Pepper Cultivation
+                      Challenges and Solutions
+                    </p>
+                  </div>
+
+                  <p class="doc-paragraph">
+                    Ceylon Pepper (<em>Piper nigrum</em> L.) is a high-value
+                    spice crop of Sri Lanka, prized for its flavor, aroma, and
+                    medicinal properties. Its cultivation contributes
+                    significantly to smallholder farmers' livelihoods in wet
+                    and intermediate agro-ecological zones. However, pepper
+                    cultivation faces multiple critical challenges that impact
+                    both productivity and farmer income.
+                  </p>
+
+                  <h4 class="section-heading blue">1. Disease Detection</h4>
+                  <p class="doc-paragraph no-indent">
+                    Traditional disease identification relies on manual
+                    observation, which is prone to error and cannot detect
+                    early-stage infections. Earlier computational methods
+                    involved manual feature extraction from leaf
+                    images—analyzing color, texture, shape, and vein
+                    patterns—and classifying them with algorithms like SVM or
+                    Random Forest.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Deep learning with CNNs has revolutionized this domain by
+                    automatically extracting hierarchical features from raw
+                    images, detecting subtle symptoms such as chlorosis,
+                    spots, and vein patterns, and enabling deployment on
+                    mobile platforms for real-time, field-level predictions.
+                  </p>
+
+                  <h4 class="section-heading green">2. Nutrient Deficiency Identification</h4>
+                  <p class="doc-paragraph no-indent">
+                    Nutrient deficiencies are often invisible until plants
+                    show stunted growth or leaf discoloration. Traditional
+                    soil tests are accurate but slow, costly, and impractical
+                    for frequent monitoring.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Modern approaches utilize leaf image analysis via CNNs to
+                    detect early signs of nutrient deficiencies, incorporating
+                    farmer inputs like plant age and growth stage to generate
+                    fertilizer recommendations based on soil type, deficiency
+                    type, and growth stage.
+                  </p>
+
+                  <h4 class="section-heading red">3. Price Prediction</h4>
+                  <p class="doc-paragraph no-indent">
+                    Pepper prices fluctuate due to seasonal, regional, and
+                    global market dynamics. Farmers often sell without
+                    predictive insights, potentially incurring financial
+                    losses.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Advanced machine learning approaches use historical market
+                    data, temperature, rainfall, and district information as
+                    model inputs, with regression and LSTM models forecasting
+                    short-term prices with high reliability, enabling farmers
+                    to plan sales based on predicted price trends.
+                  </p>
+
+                  <h4 class="section-heading purple">4. Variety Recommendation</h4>
+                  <p class="doc-paragraph no-indent">
+                    Selecting the appropriate pepper variety is crucial for
+                    maximizing yield, disease resistance, and environmental
+                    adaptability. Traditional approaches see farmers relying
+                    on personal knowledge or local advice, which may not fully
+                    consider soil, climate, or rainfall conditions.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Modern systems employ Random Forest classifiers to predict
+                    optimal varieties using soil texture, soil quality,
+                    drainage, rainfall, temperature, and elevation, providing
+                    location-specific guidance for maximizing yield and
+                    resilience.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Research Problem -->
+              <div class="col-lg-12 content-section" id="problem">
+                <div class="document-paper">
+                  <div class="doc-header">
+                    <h2 class="doc-title">Research Problem</h2>
+                    <p class="doc-subtitle">
+                      Challenges Hindering AI Adoption in Ceylon Pepper
+                      Cultivation
+                    </p>
+                  </div>
+
+                  <p class="doc-paragraph">
+                    Despite the growing application of AI, ML, and Image
+                    Processing in agriculture, several unresolved problems
+                    hinder effective adoption for Ceylon Pepper cultivation.
+                    These challenges span technical, data-related, and
+                    accessibility domains, creating barriers to practical
+                    implementation and farmer adoption.
+                  </p>
+
+                  <h4 class="section-heading blue">1. Lack of Region-Specific Datasets</h4>
+                  <p class="doc-paragraph no-indent">
+                    The absence of comprehensive, region-specific datasets for
+                    Ceylon Pepper is a major problem. Many studies use global
+                    datasets that fail to capture unique environmental
+                    conditions and local disease variations in Sri Lanka,
+                    leading to poor generalization.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Without localized data capturing Sri Lanka's specific soil
+                    conditions, climate patterns, and disease manifestations,
+                    AI models trained on international datasets demonstrate
+                    significantly reduced accuracy when applied to local
+                    pepper cultivation scenarios.
+                  </p>
+
+                  <h4 class="section-heading green">2. Limited Disease and Nutrient Identification</h4>
+                  <p class="doc-paragraph no-indent">
+                    Most prior research focuses only on disease detection
+                    without addressing nutrient deficiency. The overlap
+                    between disease and deficiency symptoms poses serious
+                    problems, as misdiagnosis could lead to incorrect
+                    treatments and further crop damage.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Current systems lack the capability to differentiate
+                    between visually similar symptoms of diseases like
+                    Phytophthora foot rot and nutrient deficiencies such as
+                    magnesium or nitrogen deficiency, potentially leading to
+                    inappropriate treatment recommendations.
+                  </p>
+
+                  <h4 class="section-heading red">3. Deployment and Accessibility Constraints</h4>
+                  <p class="doc-paragraph no-indent">
+                    State-of-the-art deep learning models often demand high
+                    computational power or continuous cloud connectivity. Sri
+                    Lankan smallholder farmers mostly rely on low-cost mobile
+                    devices with limited internet coverage, creating a digital
+                    divide.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    The computational requirements of modern AI models exceed
+                    the capabilities of affordable mobile devices commonly
+                    used by farmers, while unreliable internet connectivity in
+                    rural areas prevents real-time cloud-based processing.
+                  </p>
+
+                  <h4 class="section-heading purple">4. Absence of Farmer-Centric Price Models</h4>
+                  <p class="doc-paragraph no-indent">
+                    While global commodity price prediction systems exist, few
+                    are tailored to the Sri Lankan black pepper market,
+                    influenced by local demand, seasonal patterns, rainfall
+                    fluctuations, and international trade policies.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Existing price prediction models fail to incorporate
+                    critical local factors such as regional harvest patterns,
+                    domestic consumption trends, and the impact of monsoon
+                    seasons on both production and market dynamics specific to
+                    Sri Lanka.
+                  </p>
+
+                  <h4 class="section-heading orange">5. Lack of Integrated Applications</h4>
+                  <p class="doc-paragraph no-indent">
+                    Existing agricultural AI applications are often
+                    fragmented, with separate tools for disease detection,
+                    nutrient management, or price prediction. Most solutions
+                    lack Sinhala/Tamil language support and offline
+                    capabilities, crucial for rural farming communities.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    Farmers require a unified platform that combines multiple
+                    functionalities with localized language support and
+                    offline operation capabilities to address the
+                    comprehensive needs of pepper cultivation in Sri Lanka's
+                    diverse agricultural landscape.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Objectives -->
+              <div class="col-lg-12 content-section" id="objectives">
+                <div class="document-paper">
+                  <div class="doc-header">
+                    <h2 class="doc-title">Research Objectives</h2>
+                    <p class="doc-subtitle">
+                      Goals and Targets of the Research Study
+                    </p>
+                  </div>
+
+                  <p class="doc-paragraph">
+                    The general objective of this research is to develop a
+                    mobile-based intelligent agricultural support system that
+                    integrates disease detection, nutrient deficiency
+                    identification, price prediction, and variety recommendation
+                    for Ceylon Pepper cultivation in Sri Lanka, using advanced
+                    image processing, machine learning, and data analytics
+                    techniques.
+                  </p>
+
+                  <h4 class="section-heading blue">Specific Objectives</h4>
+
+                  <h5 class="subsection-title">1. Dataset Collection and Preparation</h5>
+                  <ul class="doc-list">
+                    <li>Collect comprehensive datasets of Ceylon Pepper leaves for disease detection (Yellow Mottle, Vine Borer, Lace Bug, and Healthy) and nutrient deficiency identification through field visits and agricultural records</li>
+                    <li>Gather environmental and market datasets, including soil type, rainfall, temperature, and historical price data</li>
+                    <li>Preprocess datasets to handle noise, class imbalance, and inconsistencies</li>
+                  </ul>
+
+                  <h5 class="subsection-title">2. Development of Machine Learning and Predictive Models</h5>
+                  <ul class="doc-list">
+                    <li>Design and train deep learning models, particularly CNNs, for accurate disease and nutrient deficiency classification</li>
+                    <li>Develop predictive models for price forecasting using historical data, weather patterns, and economic indicators</li>
+                    <li>Implement a recommendation model to suggest suitable Ceylon Pepper varieties based on location-specific environmental factors</li>
+                    <li>Optimize all models to achieve high accuracy, robustness, and efficiency for field-level deployment</li>
+                  </ul>
+
+                  <h5 class="subsection-title">3. Integration of Decision Support and Recommendations</h5>
+                  <ul class="doc-list">
+                    <li>Compile locally relevant treatment guidelines for detected diseases and nutrient deficiencies</li>
+                    <li>Link price prediction outputs to provide actionable insights on optimal selling times</li>
+                    <li>Integrate variety recommendation results to guide farmers in selecting productive and sustainable pepper varieties</li>
+                    <li>Ensure outputs are presented in simple, farmer-friendly formats</li>
+                  </ul>
+
+                  <h5 class="subsection-title">4. Mobile Application Development and Deployment</h5>
+                  <ul class="doc-list">
+                    <li>Develop a mobile-friendly interface using React Native to enable farmers to capture leaf images and access system outputs in real time</li>
+                    <li>Integrate Flask-based APIs and Firebase database for smooth backend processing and secure data handling</li>
+                    <li>Implement TensorFlow Lite for on-device inference, enabling offline functionality in rural areas</li>
+                  </ul>
+
+                  <h5 class="subsection-title">5. Evaluation and Validation</h5>
+                  <ul class="doc-list">
+                    <li>Conduct extensive testing using real field data to measure performance across all features</li>
+                    <li>Evaluate usability, accuracy, and robustness under diverse field conditions</li>
+                    <li>Collect feedback from farmers, agricultural officers, and stakeholders to refine the system</li>
+                    <li>Benchmark model accuracy against existing agricultural support systems</li>
+                  </ul>
+                </div>
+              </div>
+
+              <!-- Methodology -->
+              <div class="col-lg-12 content-section" id="methodology">
+                <div class="document-paper">
+                  <div class="doc-header">
+                    <h2 class="doc-title">Methodology</h2>
+                    <p class="doc-subtitle">
+                      Research Design and Implementation Approach
+                    </p>
+                  </div>
+
+                  <h4 class="section-heading blue">Overview</h4>
+                  <p class="doc-paragraph no-indent">
+                    The methodology describes the step-by-step process employed
+                    to develop a mobile-based intelligent agricultural support
+                    system for Ceylon Pepper cultivation. The system integrates
+                    disease detection, nutrient deficiency identification with
+                    fertilizer recommendation, price prediction, and variety
+                    recommendation, combining field-collected datasets, machine
+                    learning models, rule-based and regression-based algorithms,
+                    and mobile application deployment.
+                  </p>
+
+                  <div class="doc-image">
+                    <img src="assets/img/system.png" alt="System Architecture" />
+                  </div>
+
+                  <h4 class="section-heading green">1. Data Collection</h4>
+                  
+                  <h5 class="subsection-title">Disease Detection Dataset</h5>
+                  <p class="doc-paragraph no-indent">
+                    Field surveys were conducted in major pepper-growing regions
+                    including Kurunegala, Kandy, Matale, Ratnapura, and Galle.
+                    High-resolution images of affected leaves were captured
+                    under varying lighting conditions, angles, and backgrounds.
+                    Each image was labeled in consultation with agricultural
+                    officers. Each disease class (YMV, Vine Borer, Lace Bug) and
+                    the healthy class comprised approximately 3,200 images,
+                    later expanded through data augmentation to improve model
+                    robustness.
+                  </p>
+
+                  <h5 class="subsection-title">Nutrient Deficiency Dataset</h5>
+                  <p class="doc-paragraph no-indent">
+                    Field visits were made to plantations targeting plants
+                    displaying characteristic deficiency symptoms such as
+                    chlorosis, interveinal yellowing, leaf curling, and marginal
+                    scorching. Agricultural experts assisted in annotating the
+                    images.
+                  </p>
+
+                  <h5 class="subsection-title">Price Prediction Dataset</h5>
+                  <p class="doc-paragraph no-indent">
+                    Historical price data from 2015–2024 were collected from DEA
+                    market reports and supplemented with local market surveys.
+                    The dataset includes market location, date, price per
+                    kilogram, supply-demand ratio, and seasonal indices, along
+                    with environmental factors such as average monthly rainfall
+                    and temperature.
+                  </p>
+
+                  <h5 class="subsection-title">Variety Recommendation Dataset</h5>
+                  <p class="doc-paragraph no-indent">
+                    Data were collected from farmer surveys, soil testing, and
+                    geospatial sources such as Google Earth and historical
+                    meteorological archives. Parameters include soil type, pH,
+                    organic matter content, average annual rainfall, temperature
+                    range, and elevation.
+                  </p>
+
+                  <h4 class="section-heading red">2. Data Preprocessing</h4>
+                  
+                  <h5 class="subsection-title">Disease Detection Preprocessing</h5>
+                  <ul class="doc-list">
+                    <li>Image Resizing: All images resized to 64×64 pixels</li>
+                    <li>Normalization: Pixel values scaled from 0–255 to 0–1</li>
+                    <li>Data Augmentation: Rotation (±20°), width/height shift (0.2), shear and zoom (0.2), horizontal flip</li>
+                    <li>Dataset Splitting: 80% training, 10% validation, 10% testing</li>
+                  </ul>
+
+                  <h5 class="subsection-title">Nutrient Deficiency Preprocessing</h5>
+                  <ul class="doc-list">
+                    <li>Image Enhancement: CLAHE applied to improve visibility of chlorosis and interveinal yellowing</li>
+                    <li>Noise Removal: Gaussian filtering applied</li>
+                    <li>Resizing and Normalization: Images resized to 64×64 pixels and normalized</li>
+                    <li>Augmentation: Random rotations, flips, zooms, and shifts applied</li>
+                  </ul>
+
+                  <h5 class="subsection-title">Price Prediction Preprocessing</h5>
+                  <ul class="doc-list">
+                    <li>Missing Data Handling: Linear interpolation for continuous variables, mode imputation for categorical</li>
+                    <li>Normalization: Min-Max Scaling to range 0–1</li>
+                    <li>Temporal Feature Engineering: Seasonal patterns extracted, lag features created</li>
+                    <li>Train-Test Split: 80% training, 20% testing</li>
+                  </ul>
+
+                  <h5 class="subsection-title">Variety Recommendation Preprocessing</h5>
+                  <ul class="doc-list">
+                    <li>Data Cleaning: Outliers removed using z-score thresholding</li>
+                    <li>Categorical Encoding: Soil types one-hot encoded</li>
+                    <li>Normalization: Min-Max scaling for continuous variables</li>
+                    <li>Feature Integration: Spatial data merged to form comprehensive environmental profiles</li>
+                  </ul>
+
+                  <h4 class="section-heading purple">3. Model Development</h4>
+                  
+                  <h5 class="subsection-title">Disease Detection Model</h5>
+                  <p class="doc-paragraph no-indent">
+                    A CNN was selected as the base model. The architecture
+                    consisted of convolutional layers for feature extraction,
+                    pooling layers for dimensionality reduction, and fully
+                    connected layers for classification. Batch normalization and
+                    dropout layers were introduced to minimize overfitting.
+                  </p>
+                  <p class="doc-paragraph no-indent">
+                    The trained CNN achieved an accuracy of 92%.
+                  </p>
+
+                  <h5 class="subsection-title">Nutrient Deficiency Model</h5>
+                  <p class="doc-paragraph no-indent">
+                    A hybrid CNN + Support Vector Machine (SVM) approach was
+                    adopted. CNN extracted spatial and textural features, while
+                    the SVM acted as the classifier to provide more accurate
+                    predictions on small, specialized datasets. The trained
+                    model achieved high accuracy in correctly identifying major
+                    nutrient deficiencies, with an F1-score exceeding 90%.
+                  </p>
+
+                  <h5 class="subsection-title">Price Prediction Model</h5>
+                  <p class="doc-paragraph no-indent">
+                    Multiple machine learning regression algorithms were tested,
+                    including Linear Regression, Lasso Regression, Decision
+                    Tree, Random Forest, Gradient Boosting, XGBoost, LightGBM,
+                    and CatBoost. CatBoost Regressor demonstrated superior
+                    performance, achieving the lowest root mean square error
+                    (RMSE) and highest R² score.
+                  </p>
+
+                  <h5 class="subsection-title">Variety Recommendation Model</h5>
+                  <p class="doc-paragraph no-indent">
+                    A Random Forest Classifier was selected as the base model
+                    because of its robustness in handling mixed data types and
+                    its ability to capture nonlinear relationships. The model
+                    was trained to classify the most appropriate pepper variety
+                    based on input conditions.
+                  </p>
+
+                  <h4 class="section-heading orange">4. Mobile Application Development</h4>
+                  <p class="doc-paragraph no-indent">
+                    The mobile application was developed using React Native as
+                    the primary framework due to its cross-platform
+                    capabilities. The design followed a modular architecture so
+                    that each feature—disease detection, nutrient deficiency
+                    identification, price prediction, and variety
+                    recommendation—was implemented as an independent module
+                    while remaining connected to a shared backend system.
+                  </p>
+
+                  <h5 class="subsection-title">Key Features:</h5>
+                  <ul class="doc-list">
+                    <li>Disease Detection Module: Upload images for real-time CNN analysis</li>
+                    <li>Nutrient Deficiency Module: Image analysis with personalized fertilizer recommendations</li>
+                    <li>Price Prediction Module: Interactive forecasting tool with graphical trends</li>
+                    <li>Variety Recommendation Module: Location-based GPS and environmental data integration</li>
+                  </ul>
+
+                  <h5 class="subsection-title">Technical Architecture:</h5>
+                  <ul class="doc-list">
+                    <li>Client–server model with React Native frontend</li>
+                    <li>Flask backend API hosting trained models</li>
+                    <li>Firebase for user authentication, data storage, and notifications</li>
+                    <li>Multilingual support (Sinhala, Tamil, and English)</li>
+                  </ul>
+
+                  <h4 class="section-heading blue">5. Integration and Deployment</h4>
+                  <p class="doc-paragraph no-indent">
+                    The integration process connected backend ML models, hosted
+                    on a cloud server through Flask REST APIs, with the
+                    front-end React Native mobile application. Each
+                    functionality was exposed as a dedicated API endpoint. The
+                    system leverages a hybrid architecture of cloud and edge
+                    computing. Heavier ML models are hosted on cloud
+                    infrastructure, while lightweight preprocessing and certain
+                    inference tasks run on the mobile device to reduce response
+                    time and reliance on constant internet connectivity.
+                  </p>
+
+                  <p class="doc-paragraph no-indent">
+                    This comprehensive system integrates advanced machine
+                    learning, mobile technology, and agricultural expertise to
+                    provide Ceylon Pepper farmers with a powerful, accessible
+                    decision-support tool that addresses critical challenges in
+                    disease management, nutrient optimization, market planning,
+                    and variety selection.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Research Gap -->
+              <div class="col-lg-12 content-section" id="gap">
+                <div class="document-paper">
+                  <div class="doc-header">
+                    <h2 class="doc-title">Research Gap</h2>
+                    <p class="doc-subtitle">
+                      Identified Gaps in Current Agricultural Technology
+                    </p>
+                  </div>
+
+                  <p class="doc-paragraph">
+                    Despite significant advancements in agricultural technology,
+                    machine learning, and mobile-based precision farming,
+                    critical gaps remain in supporting Ceylon Pepper farmers in
+                    Sri Lanka across four core areas:
+                  </p>
+
+                  <h4 class="section-heading blue">1. Disease Detection Gaps</h4>
+                  <ul class="doc-list">
+                    <li><strong>Lack of localized datasets:</strong> Most datasets are collected from crops grown outside Sri Lanka, which do not reflect local agro-ecological conditions, soil types, or pepper cultivars. The Yellow Mottle Virus exhibits variable mosaic patterns depending on local climate and soil.</li>
+                    <li><strong>Limited treatment guidance:</strong> While deep learning models can classify diseases, they often do not provide actionable recommendations, leaving farmers uncertain about suitable fungicides, biocontrol methods, or cultural practices.</li>
+                    <li><strong>Field deployment constraints:</strong> Many CNN-based solutions rely on cloud computing or continuous internet access for inference, which is challenging in rural areas.</li>
+                    <li><strong>Early-stage detection limitations:</strong> Early infections are subtle, and many models struggle to identify them under varying lighting, occlusion, or leaf orientation. Delayed detection leads to late interventions and significant crop damage.</li>
+                  </ul>
+
+                  <h4 class="section-heading green">2. Nutrient Deficiency and Fertilizer Recommendation Gaps</h4>
+                  <ul class="doc-list">
+                    <li><strong>Limited feature integration:</strong> Many approaches only assess leaf greenness, ignoring plant age, growth stage, or soil-specific factors. Nutrient deficiencies in pepper are influenced by soil quality, moisture, and plant stage.</li>
+                    <li><strong>Lack of actionable recommendations:</strong> Existing systems often identify deficiencies but do not suggest fertilizer type, quantity, or application timing tailored to local conditions.</li>
+                    <li><strong>Accessibility and deployment:</strong> Laboratory or web-based solutions are not practical for smallholder farmers in remote regions. Mobile-based systems are scarce.</li>
+                  </ul>
+
+                  <h4 class="section-heading red">3. Market Price Prediction Gaps</h4>
+                  <ul class="doc-list">
+                    <li><strong>Limited integration of environmental factors:</strong> Most models rely solely on historical price data, neglecting rainfall, temperature, and local market conditions.</li>
+                    <li><strong>Short-term forecasting capability:</strong> Farmers require weekly or monthly predictions rather than long-term trends. Existing models rarely provide this.</li>
+                    <li><strong>Mobile accessibility:</strong> Real-time price updates on mobile platforms are lacking in Sri Lanka, particularly for farmers without reliable internet access.</li>
+                  </ul>
+
+                  <h4 class="section-heading purple">4. Location-Based Variety Recommendation Gaps</h4>
+                  <ul class="doc-list">
+                    <li><strong>Manual and experience-based advice:</strong> Farmers rely on personal experience or extension officer visits, which are subjective and time-consuming.</li>
+                    <li><strong>Limited environmental integration:</strong> Microclimate, soil texture, drainage, and rainfall are rarely systematically incorporated into recommendations.</li>
+                    <li><strong>Lack of real-time mobile solutions:</strong> Few systems provide immediate guidance in the field using data-driven approaches.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <!-- End Portfolio Container -->
+          </div>
+        </div>
+      </section>
+      <!-- /Portfolio Section -->
+    </main>
+
+    <footer id="footer" class="footer light-background">
+      <div class="container">
+        <div class="copyright text-center">
+          <p>
+            © <span>Copyright</span>
+            <strong class="px-1 sitename">Pepper Pal</strong>
+            <span>All Rights Reserved<br /></span>
+          </p>
+        </div>
+        <div class="social-links d-flex justify-content-center">
+          <a href=""><i class="bi bi-twitter-x"></i></a>
+          <a href=""><i class="bi bi-facebook"></i></a>
+          <a href=""><i class="bi bi-instagram"></i></a>
+          <a href=""><i class="bi bi-linkedin"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Scroll Top -->
+    <a
+      href="#"
+      id="scroll-top"
+      class="scroll-top d-flex align-items-center justify-content-center"
+      ><i class="bi bi-arrow-up-short"></i
+    ></a>
+
+    <!-- Preloader -->
+    <div id="preloader"></div>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/vendor/php-email-form/validate.js"></script>
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+      // Tab switching functionality
+      document.addEventListener("DOMContentLoaded", function () {
+        const filterButtons = document.querySelectorAll(
+          ".portfolio-filters li"
+        );
+        const contentSections = document.querySelectorAll(".content-section");
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", function () {
+            const filter = this.getAttribute("data-filter");
+
+            // Remove active class from all buttons
+            filterButtons.forEach((btn) =>
+              btn.classList.remove("filter-active")
+            );
+
+            // Add active class to clicked button
+            this.classList.add("filter-active");
+
+            // Hide all sections
+            contentSections.forEach((section) =>
+              section.classList.remove("active")
+            );
+
+            // Show selected section
+            const targetSection = document.getElementById(filter);
+            if (targetSection) {
+              targetSection.classList.add("active");
+            }
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
